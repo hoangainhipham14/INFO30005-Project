@@ -38,8 +38,6 @@ Live websites:
 
 - [Backend](https://snacks-in-a-van-info30005.herokuapp.com/)
 
-Backend Repository Commit Hash: 70c822848a1a0c3a52eb4caf6e0671ba9b8c0e49
-
 ## Postman requests
 
 For full routing documentation, refer to [this link](https://docs.google.com/document/d/1z7ycQcgdZbMaee9KHKcF9k2OtX8CSuRebNazsGc8Mcs/edit).
