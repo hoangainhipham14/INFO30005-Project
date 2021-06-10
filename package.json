@@ -1,0 +1,44 @@
+{
+  "name": "project-t02-group1",
+  "version": "1.0.0",
+  "description": "**The University of Melbourne** # INFO30005 – Web Information Technologies",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "NODE_ENV=test mocha --timeout 10000 --exit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/INFO30005-2021-SM1/project-t02-group1.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/INFO30005-2021-SM1/project-t02-group1/issues"
+  },
+  "homepage": "https://github.com/INFO30005-2021-SM1/project-t02-group1#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "bcrypt-nodejs": "^0.0.3",
+    "body-parser": "^1.19.0",
+    "chai": "^4.3.4",
+    "chai-http": "^4.3.0",
+    "connect-flash": "^0.1.1",
+    "connect-flash-plus": "^0.2.1",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "flash": "^1.1.0",
+    "heroku": "^7.52.0",
+    "is-empty": "^1.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "mocha": "^8.4.0",
+    "mongodb": "^3.6.6",
+    "mongoose": "^5.12.4",
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0"
+  }
+}
