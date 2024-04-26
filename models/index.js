@@ -1,41 +1,38 @@
 // for database login details
 require("dotenv").config();
+const { MongoClient, ServerApiVersion } = require('mongodb');
 
 module.exports = (app) => {
 
-const mongoose = require("mongoose");
+  if (process.env.NODE_ENV == "test") {
+    // we are doing unit testing, run on local mock server
+    dbAddress = "mongodb://localhost:27017/Snacks-in-a-van";
+  } else {
+    // running the actualy site, connect to MongoDB Atlas
+    CONNECTION_STRING = "mongodb+srv://<username>:<password>@cluster0.0dbcfz4.mongodb.net/Snacks-in-a-van?retryWrites=true&w=majority&ssl=true";
+    dbAddress = CONNECTION_STRING.replace("<username>", process.env.USERNAME).replace("<password>", process.env.PASSWORD);
+  }
 
-if (process.env.NODE_ENV == "test"){
-  // we are doing unit testing, run on local mock server
-  dbAddress = "mongodb://localhost:27017/Snacks-in-a-van";
-} else {
-  // running the actualy site, connect to MongoDB Atlas
-  CONNECTION_STRING =
-    "mongodb+srv://<username>:<password>@cluster0.0dbcfz4.mongodb.net/?retryWrites=true&w=majority";
-  dbAddress = CONNECTION_STRING.replace(
-    "<username>",
-    "Nhi"
-  ).replace("<password>", "snacksinavan");
-}
+  const client = new MongoClient(dbAddress, {
+    serverApi: {
+      version: ServerApiVersion.v1,
+      strict: true,
+      deprecationErrors: true,
+      useUnifiedTopology: true
+    }
+  });
 
-mongoose.connect(dbAddress, {
-  useNewUrlParser: true,
-  useCreateIndex: true,
-  useUnifiedTopology: true,
-  useFindAndModify: false,
-  dbName: "Snacks-in-a-van",
-});
+  async function connectDB() {
+    try {
+      await client.connect();
+      console.log("DB has been connected");
+    } catch (error) {
+      console.log("Error connecting to the database:", error);
+      process.exit(1);
+    } finally {
+      await client.close();
+    }
+  }
 
-const db = mongoose.connection;
-
-db.on("error", (err) => {
-  console.error(err);
-  process.exit(1);
-});
-
-db.once("open", async () => {
-  app.emit("DBready");    // this line lets us signal when the DB is ready
-  console.log("Connected to " + dbAddress);
-});
-
+  connectDB();
 }
