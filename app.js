@@ -5,16 +5,6 @@ const app = express();
 app.use(express.urlencoded({ extended: true })); // replaces body-parser
 app.use(express.json());
 
-//allow cors
-const cors = require("cors");
-
-app.use(
-  cors({
-    credentials: true, // from Express docs: adds the Access-Control-Allow-Credentials CORS header
-    origin: "https://snacks-in-a-van-info30005.herokuapp.com/", // or your heroku url
-  })
-);
-
 const dotenv = require("dotenv").config();
 const session = require("express-session");
 const passport = require("passport");

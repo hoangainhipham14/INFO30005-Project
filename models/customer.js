@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const bcrypt = require('bcrypt-nodejs');
+// const bcrypt = require('bcrypt-nodejs');
 
 const customerSchema = new Schema({
   password: {
@@ -25,15 +25,15 @@ const customerSchema = new Schema({
   },
 });
 
-customerSchema.methods.generateHash = (password) => {
-  return bcrypt.hashSync(password, bcrypt.genSaltSync(10), null);
-}
+// customerSchema.methods.generateHash = (password) => {
+//   return bcrypt.hashSync(password, bcrypt.genSaltSync(10), null);
+// }
 
-customerSchema.methods.validPassword = function(password) {
-  /* arrow function changes 'this'! */
-  /* second item is the hash */
-  return bcrypt.compareSync(password, this.password);
-}
+// customerSchema.methods.validPassword = function(password) {
+//   /* arrow function changes 'this'! */
+//   /* second item is the hash */
+//   return bcrypt.compareSync(password, this.password);
+// }
 
 /* make model available to other files 
    compile the schema into a model */
