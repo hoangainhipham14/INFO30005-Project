@@ -11,11 +11,11 @@ if (process.env.NODE_ENV == "test"){
 } else {
   // running the actualy site, connect to MongoDB Atlas
   CONNECTION_STRING =
-    "mongodb+srv://<username>:<password>@cluster0.lpfxj.mongodb.net/Snacks-in-a-van?retryWrites=true&w=majority";
+    "mongodb+srv://<username>:<password>@cluster0.0dbcfz4.mongodb.net/?retryWrites=true&w=majority";
   dbAddress = CONNECTION_STRING.replace(
     "<username>",
-    process.env.MONGO_USERNAME
-  ).replace("<password>", process.env.MONGO_PASSWORD);
+    "Nhi"
+  ).replace("<password>", "snacksinavan");
 }
 
 mongoose.connect(dbAddress, {
